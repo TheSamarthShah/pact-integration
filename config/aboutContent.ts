@@ -35,9 +35,9 @@ export const aboutData = {
     team: [
       {
         id: "partner-1",
-        name: "Shreyjitsinh Dodiya",
+        name: "Shreyjeetsinh Dodiya",
         role: "Managing Partner, Integration",
-        bio: "Shreyjitsinh oversees the architectural strategy and deployment of Pact's autonomous systems. With a background in complex systems engineering, he focuses on ensuring that our reconciliation agents deploy seamlessly into legacy ERP environments without disrupting existing treasury workflows. His mandate is absolute data sovereignty and operational continuity for our enterprise clients."
+        bio: "Shreyjeetsinh oversees the architectural strategy and deployment of Pact's autonomous systems. With a background in complex systems engineering, he focuses on ensuring that our reconciliation agents deploy seamlessly into legacy ERP environments without disrupting existing treasury workflows. His mandate is absolute data sovereignty and operational continuity for our enterprise clients."
       },
       {
         id: "partner-2",
