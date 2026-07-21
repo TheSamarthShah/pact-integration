@@ -6,14 +6,22 @@ import { Header } from "@/components/sections/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Pact Integration | The Standard in Structural Reconciliation',
-  description: 'Autonomous AI systems bridging the gap between procurement contracts and financial execution.',
+  title: "Pact Integration | The Standard in Structural Reconciliation",
+  description: "Autonomous AI systems bridging the gap between procurement contracts and financial execution.",
   icons: {
     icon: [
-      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      // Standard browser tab favicon
+      { url: "/favicon.ico", sizes: "any" }, 
+      // High-resolution icon for shortcuts/dashboards
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
+    // Optional: Apple touch icon for iPhones
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ]
   },
 };
+
 
 
 export default function RootLayout({
