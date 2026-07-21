@@ -11,7 +11,7 @@ export function Header() {
     {/* The Enterprise Logo with Actual Symbol */}
     <Link href="/" className="flex items-center gap-3 group">
       {/* Changed w-6 h-6 to w-9 h-9 (36px). Adjust these values as needed. */}
-      <div className="relative w-10 h-10 grayscale group-hover:opacity-80 transition-opacity">
+      <div className="relative w-12 h-12 grayscale group-hover:opacity-80 transition-opacity">
         <Image 
           src="/logo_symbol.png" 
           alt="Pact Integration Symbol" 
