@@ -10,8 +10,6 @@ export const metadata: Metadata = {
   description: "Autonomous AI systems bridging the gap between procurement contracts and financial execution.",
   icons: {
     icon: [
-      // Standard browser tab favicon
-      { url: "/favicon.ico", sizes: "any" }, 
       // High-resolution icon for shortcuts/dashboards
       { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
