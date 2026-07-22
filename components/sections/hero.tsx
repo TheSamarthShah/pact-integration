@@ -15,12 +15,19 @@ export function HeroSection({ content }: { content: any }) {
             {content.hero.subhead}
           </p>
           <div className="pt-4 flex flex-col sm:flex-row gap-4">
-            <Button className="rounded-none px-8 py-6 text-lg font-medium transition-colors">
-              Apply for the Advisory Panel
-            </Button>
-            <Button variant="outline" className="rounded-none px-8 py-6 text-lg font-medium transition-colors">
-              Read the Research Brief
-            </Button>
+            {/* Primary CTA jumps to the form */}
+            <a href="#application">
+              <Button className="rounded-none px-8 py-6 text-lg font-medium transition-colors">
+                Apply for the Advisory Panel
+              </Button>
+            </a>
+            
+            {/* Secondary CTA jumps to the problem statement */}
+            <a href="#research">
+              <Button variant="outline" className="rounded-none px-8 py-6 text-lg font-medium transition-colors bg-background">
+                Read the Research Brief
+              </Button>
+            </a>
           </div>
         </div>
       </div>

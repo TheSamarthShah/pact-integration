@@ -32,7 +32,12 @@ export function Header() {
           <Link href="/about" className="hover:text-foreground transition-colors">
             About the Firm
           </Link>
-          <a href="mailto:pactintegration@gmail.com" className="text-foreground hover:underline underline-offset-4">
+          <a 
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=pactintegration@gmail.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-foreground hover:underline underline-offset-4"
+          >
             Contact
           </a>
         </div>
