@@ -1,9 +1,16 @@
 name = "pact-integration"
 compatibility_date = "2024-03-20"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".vercel/output/static"
 
-# This is the critical piece that fixes your error
+# Point Cloudflare to the OpenNext compiled engine
+main = ".open-next/worker.js"
+
+# Tell Cloudflare where your static frontend files live
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+# The service binding we fixed earlier
 [[services]]
 binding = "WORKER_SELF_REFERENCE"
 service = "pact-integration"
