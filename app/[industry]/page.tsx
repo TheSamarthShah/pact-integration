@@ -6,6 +6,14 @@ import { SolutionSection } from "@/components/sections/solution";
 import { ProgressSection } from "@/components/sections/progress";
 import { ApplicationSection } from "@/components/sections/application";
 
+export function generateStaticParams() {
+  return [
+    { industry: 'manufacturing' },
+    { industry: 'jewelry' },
+    { industry: 'logistics' },
+  ];
+}
+
 export default async function IndustryLandingPage({ 
   params 
 }: { 
