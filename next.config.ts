@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  // Note: If you are using next/image, you must disable the default optimization
-  // or use a custom loader, as Cloudflare does not support Vercel's image optimizer.
+  // This is the magic line OpenNext is looking for
+  output: "standalone",
+  
+  // Keep your other config options if you have them
   images: {
     unoptimized: true,
   },
