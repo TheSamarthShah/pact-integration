@@ -4,16 +4,15 @@ import Link from "next/link";
 // 2. Add your targeted SEO keywords and metadata here
 export const metadata: Metadata = {
   title: "B2B Operations Re-Engineering | Pact Integration",
-  description: "Custom, scalable architectural research mapping supply chain friction, ERP bottlenecks, and logistical realities for high-volume operators.",
-  keywords: [
-    "B2B operations",
-    "supply chain mapping",
-    "ERP bottleneck analysis",
-    "Pact Integration",
-    "industrial manufacturing logistics",
-    "freight audit automation",
-    "dual-ledger tracking jewelry"
-  ],
+  description: "...",
+  alternates: { canonical: "https://pactintegration.com" },
+  openGraph: {
+    title: "B2B Operations Re-Engineering | Pact Integration",
+    description: "...",
+    url: "https://pactintegration.com",
+    siteName: "Pact Integration",
+    type: "website",
+  },
 };
 
 export default function Home() {
