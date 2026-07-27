@@ -1,4 +1,20 @@
+import { Metadata } from "next"; // 1. Import Metadata types
 import Link from "next/link";
+
+// 2. Add your targeted SEO keywords and metadata here
+export const metadata: Metadata = {
+  title: "B2B Operations Re-Engineering | Pact Integration",
+  description: "Custom, scalable architectural research mapping supply chain friction, ERP bottlenecks, and logistical realities for high-volume operators.",
+  keywords: [
+    "B2B operations",
+    "supply chain mapping",
+    "ERP bottleneck analysis",
+    "Pact Integration",
+    "industrial manufacturing logistics",
+    "freight audit automation",
+    "dual-ledger tracking jewelry"
+  ],
+};
 
 export default function Home() {
   const sectors = [
@@ -30,6 +46,7 @@ export default function Home() {
               2026 Architectural Research
             </div>
             
+            {/* SEO Strategy: Google heavily weighs this exact H1 text for rankings */}
             <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight leading-tight max-w-4xl">
               Re-engineering the reality of B2B operations.
             </h1>
@@ -79,14 +96,14 @@ export default function Home() {
         </div>
       </section>
 
-<footer className="border-t border-slate-200 py-12 px-8 lg:px-16 text-center text-sm text-slate-500">
-  <div className="flex justify-center gap-8 mb-4">
-    <Link href="/about" className="hover:text-slate-900">About</Link>
-    <span className="cursor-not-allowed">Privacy Policy</span>
-    <span className="cursor-not-allowed">Terms of Service</span>
-  </div>
-  <p>© {new Date().getFullYear()} Pact Integration. All rights reserved.</p>
-</footer>
+      <footer className="border-t border-slate-200 py-12 px-8 lg:px-16 text-center text-sm text-slate-500">
+        <div className="flex justify-center gap-8 mb-4">
+          <Link href="/about" className="hover:text-slate-900">About</Link>
+          <span className="cursor-not-allowed">Privacy Policy</span>
+          <span className="cursor-not-allowed">Terms of Service</span>
+        </div>
+        <p>© {new Date().getFullYear()} Pact Integration. All rights reserved.</p>
+      </footer>
 
     </main>
   );
