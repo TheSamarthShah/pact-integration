@@ -1,7 +1,21 @@
-import { aboutData } from "@/config/aboutContent";
 import React from "react";
+import { notFound } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // Fetch the data from Supabase (Next.js will cache this)
+  const { data, error } = await supabase
+    .from('site_content')
+    .select('content')
+    .eq('page_id', 'about')
+    .single();
+
+  if (error || !data) {
+    return notFound();
+  }
+
+  const aboutData = data.content;
+
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-slate-900 selection:text-white">
       <main className="max-w-5xl mx-auto px-8 lg:px-16 py-20 lg:py-32">
@@ -21,11 +35,8 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold mb-4">
               {aboutData.mandate.title}
             </h2>
-            {aboutData.mandate.content.map((paragraph, index) => (
-              <p
-                key={index}
-                className="text-slate-600 leading-relaxed mb-6 last:mb-0"
-              >
+            {aboutData.mandate.content.map((paragraph: string, index: number) => (
+              <p key={index} className="text-slate-600 leading-relaxed mb-6 last:mb-0">
                 {paragraph}
               </p>
             ))}
@@ -36,14 +47,12 @@ export default function AboutPage() {
               {aboutData.methodology.title}
             </h3>
             <ul className="space-y-6">
-              {aboutData.methodology.items.map((item) => (
+              {aboutData.methodology.items.map((item: any) => (
                 <li key={item.id} className="flex items-start">
                   <span className="w-2 h-2 mt-2 mr-4 bg-slate-900 rounded-full shrink-0"></span>
                   <div>
                     <h4 className="font-bold text-slate-900">{item.heading}</h4>
-                    <p className="text-sm text-slate-600 mt-1">
-                      {item.description}
-                    </p>
+                    <p className="text-sm text-slate-600 mt-1">{item.description}</p>
                   </div>
                 </li>
               ))}
@@ -58,7 +67,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {aboutData.leadership.team.map((leader) => (
+            {aboutData.leadership.team.map((leader: any) => (
               <div key={leader.id} className="border-l-4 border-slate-900 pl-6">
                 <h3 className="text-xl font-bold text-slate-900 uppercase tracking-wide">
                   {leader.name}
