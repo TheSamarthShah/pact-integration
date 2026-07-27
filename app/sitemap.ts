@@ -2,7 +2,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://yourdomain.com';
+  const base = 'https://pactintegration.com';
   return [
     { url: base, priority: 1 },
     { url: `${base}/manufacturing`, priority: 0.8 },
