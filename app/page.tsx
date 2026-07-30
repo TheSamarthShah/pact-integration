@@ -65,7 +65,13 @@ export const metadata: Metadata = {
     "AI solutions",
     "Shreyjeetsinh dodiya",
     "Samarth shah",
-    "Shreyjeet"
+    "Shreyjeet",
+    "ahmedabad b2b",
+    "software company in ahmedabad",
+    "ahmedabad",
+    "pact integration ahmedabad",
+    "ai services in ahmedabad",
+    "automation module"
   ],
 
   authors: [
