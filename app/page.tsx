@@ -62,7 +62,10 @@ export const metadata: Metadata = {
     "Business technology",
     "B2B operations",
     "Enterprise solutions",
-    "AI solutions"
+    "AI solutions",
+    "Shreyjeetsinh dodiya",
+    "Samarth shah",
+    "shreyjeet"
   ],
 
   authors: [
