@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     "AI solutions",
     "Shreyjeetsinh dodiya",
     "Samarth shah",
-    "shreyjeet"
+    "Shreyjeet"
   ],
 
   authors: [
