@@ -71,7 +71,8 @@ export const metadata: Metadata = {
     "ahmedabad",
     "pact integration ahmedabad",
     "ai services in ahmedabad",
-    "automation module"
+    "automation module",
+    "AI Agent & Automation in ahmedabad"
   ],
 
   authors: [
