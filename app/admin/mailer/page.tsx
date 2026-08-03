@@ -1,10 +1,9 @@
+import RichTextEditor from "@/components/ui/RichTextEditor";
 import { supabase } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 
-// The page receives searchParams from the URL automatically
 export default async function AdminMailerPage({ searchParams }: { searchParams: Promise<{ success?: string }> }) {
   
-  // Wait for searchParams (required in modern Next.js App Router)
   const params = await searchParams;
 
   async function handleSendEmail(formData: FormData) {
@@ -14,7 +13,8 @@ export default async function AdminMailerPage({ searchParams }: { searchParams: 
     const senderName = formData.get('senderName') as string;
     const recipient = formData.get('recipient') as string;
     const subject = formData.get('subject') as string;
-    const message = formData.get('message') as string;
+    // 'message' now contains raw HTML string (e.g., "<p>Hello</p><ul><li>Item</li></ul>")
+    const message = formData.get('message') as string; 
 
     if (secret !== process.env.ADMIN_SECRET_KEY) {
       return;
@@ -31,7 +31,6 @@ export default async function AdminMailerPage({ searchParams }: { searchParams: 
       body_text: message,
     });
 
-    // If it saves successfully, refresh the page with a success flag
     if (!error) {
       redirect('?success=true');
     }
@@ -42,7 +41,6 @@ export default async function AdminMailerPage({ searchParams }: { searchParams: 
       <div className="max-w-2xl w-full bg-white p-8 rounded-xl shadow-sm border border-slate-200">
         <h1 className="text-2xl font-bold mb-6">Internal Mailer</h1>
         
-        {/* If the URL has ?success=true, show this banner */}
         {params.success === 'true' && (
           <div className="mb-6 p-4 bg-green-50 text-green-700 border border-green-200 rounded-md font-medium">
             ✅ Email successfully saved to database and queued!
@@ -75,10 +73,11 @@ export default async function AdminMailerPage({ searchParams }: { searchParams: 
 
           <div>
             <label className="block text-sm font-semibold mb-2">Message</label>
-            <textarea name="message" rows={6} required className="w-full border p-2 rounded-md" />
+            {/* Replaced <textarea> with the contenteditable Client Component */}
+            <RichTextEditor name="message" />
           </div>
 
-          <button type="submit" className="bg-blue-600 text-white font-bold py-3 px-4 rounded-md">
+          <button type="submit" className="bg-blue-600 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-700 transition-colors">
             Queue Email via Webhook
           </button>
         </form>
