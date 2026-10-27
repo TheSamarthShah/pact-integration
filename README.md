@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pact Integration — AEO / buyer-question content update (27 October 2026)
 
-## Getting Started
+## What changed
+Six EXISTING public service pages receive distinct, practical question-and-answer content plus implementation stages and examples. Their canonical URLs, design language, headers, navigation, service schema, breadcrumbs, metadata, sitemap URLs and CTAs are preserved. No founder images, homepage scripts, contact form, or APIs are modified by this package.
 
-First, run the development server:
+## Install
+Merge/copy the included `public/expertise/*.html` into the SAME paths in the existing `TheSamarthShah/pact-integration` repository. Do not replace the entire `public` folder. Commit and deploy through the existing Cloudflare/OpenNext pipeline.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Website live vs code status
+This package is a code update. A live deployment requires GitHub write access and your hosting deployment to succeed. Do not assume the public domain changed merely because the package exists.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Production verification
+- Open each of the six pages. Test 320px/390px/mobile and desktop widths and confirm layout, FAQ text and internal links.
+- In Search Console, use URL Inspection for the changed pages. Existing sitemap paths are unchanged; no new sitemap submission is necessary.
+- The site's contact form is separate and may be disabled until its backend/API secrets are configured. This update does NOT fix email delivery.
+- Avoid fabricating customer testimonials, case studies, percentages or guarantees of being cited by AI tools.
+- Google says AI search eligibility builds on normal crawlability, indexing, snippet eligibility and useful original content; FAQ structured data is not a special requirement for this business.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Sources for implementation strategy
+- https://developers.google.com/search/docs/appearance/ai-features
+- https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
+- https://help.openai.com/en/articles/12627856
