@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/insights/scoping-a-useful-mvp.html",
     "/insights/useful-ai-starts-with-a-workflow.html",
     "/insights/software-that-fits-operations.html",
-    "/insights/ai-integration-aspnet-core-sql-server-n8n.html",
+    "/insights/ai-integration-aspnet-core-sql-server-n8n",
   ];
   return paths.map((path) => ({
     url: `${base}${path === "/" ? "" : path}`,

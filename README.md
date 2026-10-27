@@ -1,31 +1,29 @@
-# Pact Integration — AEO Step 7: Technical walkthrough (27 October 2026)
+# Pact Integration — Bing canonical and redirect fix
 
-This update is based on the currently deployed V3 design language. It adds a long-form, original **illustrative technical walkthrough** about an AI-assisted invoice approval workflow with ASP.NET Core, SQL Server, n8n, and a model API. It is **not** a description of a completed client engagement or a deployable invoice-processing product.
+## Issue found (27 October 2026)
 
-## Files
+Bing Webmaster Tools reported that `https://pactintegration.com/insights/ai-integration-aspnet-core-sql-server-n8n.html` redirects to `https://pactintegration.com/insights/ai-integration-aspnet-core-sql-server-n8n`, while the destination declares the `.html` version as canonical. This inconsistency prevents the tested URLs from being accepted as canonical candidates. Bing also flagged the title as too long.
 
-- `public/insights/ai-integration-aspnet-core-sql-server-n8n.html` — New standalone technical article with canonical URL, TechArticle and BreadcrumbList JSON-LD, source links, practical snippets, architecture diagram, and buyer FAQs.
-- `public/expertise/ai-automation-integration.html` — Adds one contextual internal link to the new article while preserving the existing page content and styling.
-- `app/sitemap.ts` — Adds the new article to the existing sitemap without removing existing URLs.
+Cloudflare Pages commonly redirects `.html` static URLs to extensionless paths (https://developers.cloudflare.com/pages/configuration/serving-pages/). This package uses the **extensionless path as the single canonical URL**, matching the live redirect shown in Bing Webmaster Tools.
 
-## Publishing
+## Files to replace in the existing GitHub repository
 
-Copy these files into the SAME locations in the existing `TheSamarthShah/pact-integration` repository; commit and deploy through the existing Cloudflare/OpenNext process. **Do not replace the entire repository or unrelated homepage files.** Verify `/insights/ai-integration-aspnet-core-sql-server-n8n.html` returns a successful HTTPS response, is linked from the AI service page, and appears in `/sitemap.xml`.
+1. `public/insights/ai-integration-aspnet-core-sql-server-n8n.html`: retains the underlying HTML file, changes rel=canonical, Open Graph URL, TechArticle and BreadcrumbList JSON-LD URLs to `https://pactintegration.com/insights/ai-integration-aspnet-core-sql-server-n8n` and uses a shorter HTML title.
+2. `app/sitemap.ts`: lists `/insights/ai-integration-aspnet-core-sql-server-n8n` instead of the redirecting `.html` address.
+3. `public/expertise/ai-automation-integration.html`: updates the article link to point to the extensionless canonical address.
 
-## Preview
+Extract the ZIP **at the repository root**, preserving all other existing files. Commit to `TheSamarthShah/pact-integration` and redeploy on Cloudflare. Do not rename or delete the HTML file; Cloudflare serves it at the extensionless path.
 
-Open the standalone HTML file. In the local preview, the favicon and some internal links refer to production `pactintegration.com` routes; those will work after deployment.
+## Verify before asking search engines to index
 
-## AEO and trust notes
+1. `https://pactintegration.com/insights/ai-integration-aspnet-core-sql-server-n8n` should return HTTP 200 and HTML.
+2. Its rendered/source `<link rel="canonical">` should point to itself (no `.html`).
+3. `.html` address should redirect once to the extensionless address (preferably HTTP 301/308).
+4. `https://pactintegration.com/sitemap.xml` should include the extensionless URL only.
+5. In Bing Webmaster Tools, use **Live URL** to inspect the extensionless URL; after it is indexable, request indexing *once*. Recheck Google Search Console, because Google previously inspected the `.html` URL.
 
-- No fabricated clients, testimonials, outcomes, conversion improvements or citations. `TechArticle` structured data describes the actual page, not a guarantee of Google or Microsoft AI feature inclusion.
-- The C#, SQL and n8n sections are an educational architecture example. They require project-specific authentication, secrets, data governance, retry logic, evaluation and testing before production.
-- After deployment, inspect the URL in Google Search Console and Bing Webmaster Tools; request crawling if needed. Measure Bing AI citations as a longer-term, secondary indicator.
-- Check the separate contact-form configuration to ensure potential project enquiries can actually be delivered.
+## Site-wide follow-up
 
-## Sources
+The same `.html` to extensionless behavior may affect other static pages in `/expertise/` and `/insights/`. Audit their canonical URLs, sitemap, Open Graph links, structured data, and internal navigation and align them consistently. The three-file patch intentionally does **not** overwrite your unrelated homepage, founders, or contact-form files.
 
-- https://developers.openai.com/api/reference/resources/responses/methods/create
-- https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/
-- https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-requests
-- https://developers.google.com/search/docs/appearance/ai-features
+This is a source update based on the reported Bing redirect behavior, **not proof of production deployment or Bing indexing**.
